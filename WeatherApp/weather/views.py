@@ -21,7 +21,7 @@ def index(request):
         json_data = requests.get(url.format(city)).json()
 
         cityWeather = {
-            'city' : json_data['name'] + ',' + json_data['sys']['country'],
+            'city' : json_data['name'] + ', ' + json_data['sys']['country'],
             'temperature' : str(math.ceil(json_data['main']['temp'] - 273.15)),
             'description' : json_data['weather'][0]['description'],
             'icon' : json_data['weather'][0]['icon'],

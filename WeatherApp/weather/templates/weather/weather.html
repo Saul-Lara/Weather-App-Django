@@ -5,72 +5,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 </head>
 
 <body>
-    <section class="hero is-primary">
-        <div class="hero-body">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Weather App</a>
+      </nav>
+    </header>
+
+    <main role="main">
+        <div class="jumbotron">
+          <h1 class="display-4">What's the weather like?</h1>
+            <br>
+          <form class="form-inline" method="POST">
+              {% csrf_token %}
+              <div class="form-group mx-sm-3 mb-2">
+                  {{ form.name }}
+              </div>
+              <button type="submit" class="btn btn-primary mb-2">Add City</button>
+            </form>
+        </div>
+
+        <div class="album py-5 bg-light">
             <div class="container">
-                <h1 class="title">
-                    What's the weather like?
-                </h1>
-            </div>
-        </div>
-    </section>
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-offset-4 is-4">
-                    <form method="POST">
-                        {% csrf_token %}
-                        <div class="field has-addons">
-                            <div class="control is-expanded">
-                                {{ form.name }}
-                            </div>
-                            <div class="control">
-                                <button type="submit" class="button is-info">
-                                    Add City
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-offset-4 is-4">
+                <div class="row">
                     {% for city_weather in weather_data %}
-                    <div class="box">
-                        <article class="media">
-                            <div class="media-left">
-                                <figure class="image is-50x50">
-                                    <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="Image">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <span class="title">{{ city_weather.city }}</span>
-                                        <br>
-                                        <span class="subtitle">{{ city_weather.temperature}} °C</span>
-                                        <br> {{ city_weather.description }}
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
+                    <div class="col-md-3">
+                      <div class="card mb-3 shadow-sm">
+                        <img src="http://openweathermap.org/img/wn/{{ city_weather.icon }}@2x.png" alt="Image" style="max-width: 100px; display:block;
+margin:auto;">
+                        <div class="card-body" style="text-align:center;">
+                            <h5 class="card-title">{{ city_weather.city }}</h5>
+                            <p class="card-text">Temperature: {{ city_weather.temperature}} °C</p>
+                            <p class="card-text">Description: {{ city_weather.description }}</p>
+                        </div>
+                      </div>
                     </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
-    </section>
-    <footer class="footer">
+    </main>
+
+    <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2019-2022 Saul Lara.</p>
     </footer>
+
 </body>
 
 </html>
