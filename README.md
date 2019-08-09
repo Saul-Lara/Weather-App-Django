@@ -1,9 +1,9 @@
 # Weather App Django
  
 This is a Weather App developed with python and Django that inform us about climate in several cities.
-This app can be runed in browsers.
+This app can be runned in browsers.
 
-<p align="center"><img src="https://github.com/Saul-Lara/Weather-App-Django/blob/master/image.JPG"/></p>
+<p align="center"><img src="https://github.com/Saul-Lara/Weather-App-Django/blob/master/image.jpg"/></p>
 
 ## Built With 🛠️
 ```
