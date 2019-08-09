@@ -4,7 +4,7 @@ from .models import City
 from .forms import Cityform
 
 def index(request):
-    myApiKey = '8b8725efe2207db4e9432a2fdd69b3d7';
+    myApiKey = 'Add your openweathermap.org apy key here';
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&appid=' + myApiKey
 
     weather_data = []
